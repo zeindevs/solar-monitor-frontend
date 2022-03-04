@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { classNames } from "../helpers/utils";
 
 export default function NavTop() {
   return (
@@ -25,27 +26,24 @@ export default function NavTop() {
           <NavLink
             to="/devices"
             className={({ isActive }) =>
-              isActive
-                ? "py-1 px-3 rounded-md bg-blue-700 hover:bg-blue-700 shadow-sm"
-                : "py-1 px-3 rounded-md hover:bg-blue-700"
+              classNames(isActive ? 'bg-blue-700' : '', 'py-1 px-3 rounded hover:bg-blue-700 shadow-sm') 
             }
           >
             Devices
           </NavLink>
-          {/* <NavLink
+          <NavLink
             to="/users"
             className={({ isActive }) =>
-              isActive
-                ? "py-1 px-3 rounded-md bg-blue-700 hover:bg-blue-700 shadow-sm"
-                : "py-1 px-3 rounded-md hover:bg-blue-700"
+              classNames(isActive ? 'bg-blue-700' : '', 'py-1 px-3 rounded hover:bg-blue-700 shadow-sm') 
             }
           >
             Users
-          </NavLink> */}
+          </NavLink>
         </div>
       </div>
-      <div>
+      <div className="flex gap-2 items-center">
         <p>email@gmail.com</p>
+        <button className="text-sm py-1 px-3 rounded bg-red-500 hover:bg-red-600 focus:bg-red-600">Logout</button>
       </div>
     </div>
   );

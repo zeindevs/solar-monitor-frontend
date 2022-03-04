@@ -2,18 +2,18 @@ import { CogIcon, TerminalIcon } from "@heroicons/react/outline";
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function Devices({ data }) {
+function Users({ data }) {
   if (data.length <= 0) {
     return (
       <div className="bg-gray-100 text-sm text-center border rounded mb-2 p-3 hover:bg-gray-200 hover:border-gray-300">
-        <span>devices not available</span>
+        <span>users not available</span>
       </div>
     );
   }
 
   return data.map((item, index) => (
     <NavLink
-      to={"/devices/" + item.uid}
+      to={"/users/" + item.uid}
       className="bg-gray-100 border rounded mb-2 p-3 flex justify-between items-center hover:bg-gray-200 hover:border-gray-300"
     >
       <div className="flex gap-3">
@@ -47,22 +47,22 @@ function Devices({ data }) {
   ));
 }
 
-export default function DevicesList({ data }) {
+export default function UsersList({ data }) {
   return (
-    <>
+    <div className="bg-white p-3">
       <div className="mb-3 flex justify-between">
         <div>
-          <h3 className="font-medium">Devices</h3>
+          <h3 className="font-medium">Users</h3>
         </div>
         <div>
           <button className="text-xs bg-blue-500 py-1 px-2 rounded-sm text-white hover:bg-blue-600 focus:bg-blue-700">
-            Add Device
+            Add User
           </button>
         </div>
       </div>
       <div>
-        <Devices data={data} />
+        <Users data={data} />
       </div>
-    </>
+    </div>
   );
 }

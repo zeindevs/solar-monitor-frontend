@@ -3,9 +3,12 @@ import NavTop from "../../components/NavTop";
 
 export default function Home() {
   return (
-    <>
+    <div className="bg-gray-100">
       <NavTop />
-      <div>Home</div>
-    </>
+      <div className="bg-blue-500 flex justify-between py-2 px-10 text-white">
+        <div>Dashboard</div>
+        <div></div>
+      </div>
+    </div>
   );
 }

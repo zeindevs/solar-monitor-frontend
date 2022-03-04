@@ -4,7 +4,7 @@ import ChartOutputVoltage from "./chart/ChartOutputVoltge";
 
 export default function StatisiticsUsages() {
   return (
-    <div className="mb-3">
+    <div className="mb-3 bg-white p-3">
       <div className="mb-3 flex justify-between">
         <h3 className="font-medium">Statistics Usages</h3>
         <div>

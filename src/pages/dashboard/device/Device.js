@@ -1,22 +1,25 @@
 import React from "react";
 import NavTop from "../../../components/NavTop";
-import DevicesList from "../../../components/DevicesList";
-import DeviceInfo from "../../../components/DeviceInfo";
+import DevicesList from "../../../components/device/DevicesList";
+import DeviceInfo from "../../../components/device/DeviceInfo";
 
 const devices = [
   {
     uid: "D001",
     serial: "0000-0000-0000",
+    owner: "owner1@gmail.com",
     status: true,
   },
   {
     uid: "D002",
     serial: "0000-0000-0000",
+    owner: "owner1@gmail.com",
     status: true,
   },
   {
     uid: "D003",
     serial: "0000-0000-0000",
+    owner: "owner1@gmail.com",
     status: false,
   },
 ];
@@ -32,7 +35,7 @@ export default function Device() {
         <div></div>
       </div>
       <div className="p-3 flex flex-row gap-3">
-        <div className="bg-white w-3/4 p-3">
+        <div className="w-3/4">
           <DevicesList data={devices} />
         </div>
         <div className="bg-white w-3/12 p-3">

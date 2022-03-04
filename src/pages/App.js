@@ -4,8 +4,8 @@ import store from "../store/store";
 import "./App.css";
 import Device from "./dashboard/device/Device";
 import DeviceMonitor from "./dashboard/device/DeviceMonitor";
-import Monitor from "./dashboard/Monitor";
-import User from "./dashboard/User";
+import Home from "./dashboard/Home";
+import Users from "./dashboard/users/Users";
 import Login from "./form/Login";
 import Register from "./form/Register";
 
@@ -43,7 +43,7 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <Monitor />
+              <Home />
             </PrivateRoute>
           }
         />
@@ -67,7 +67,7 @@ function App() {
           path="/users"
           element={
             <PrivateRoute>
-              <User />
+              <Users />
             </PrivateRoute>
           }
         />
