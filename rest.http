@@ -1,0 +1,44 @@
+
+### Login
+# POST http://localhost:8000/auth/jwt/create HTTP/1.0
+POST http://103.120.232.151:6001/auth/jwt/create HTTP/1.0
+Content-Type: application/json
+
+{
+    "email": "zeindevs@gmail.com",
+    "password": "Alvica12#"
+}
+
+### Token Refresh
+# POST http://localhost:8000/auth/jwt/refresh HTTP/1.0
+POST http://103.120.232.151:6001/auth/jwt/refresh HTTP/1.0
+Content-Type: application/json
+
+{
+    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjI5OTE4NSwianRpIjoiMzczZWRmYmU1YzExNDQ4YzlmMjMyMmUwNGU4MWFhNmYiLCJ1c2VyX2lkIjoxfQ.EcTs7gMb2CwvwGMhK1IsssjPGNkV-5Lh_FXHVOYN_rc"
+}
+
+### Token Verify
+# POST http://localhost:8000/auth/jwt/verify HTTP/1.0
+POST http://103.120.232.151:6001/auth/jwt/verify HTTP/1.0
+Content-Type: application/json
+
+{
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ2NDQ4NjgwLCJqdGkiOiJkNDEyYjJiYzJhYmQ0ODI5YmViZDY0OWU0MDgyOTY4YiIsInVzZXJfaWQiOjF9.6nBp5mkQHTRQzY5hU0i_g7MqNcQeR8LR3QjGMNLk5_8"
+}
+
+### Get Devices
+# GET http://localhost:8000/api/v1/device/ HTTP/1.0
+GET http://103.120.232.151:6001/api/v1/device/ HTTP/1.0
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ2NDQ4NjgwLCJqdGkiOiJkNDEyYjJiYzJhYmQ0ODI5YmViZDY0OWU0MDgyOTY4YiIsInVzZXJfaWQiOjF9.6nBp5mkQHTRQzY5hU0i_g7MqNcQeR8LR3QjGMNLk5_8
+
+### Get Devices By ID
+GET http://localhost:8000/api/v1/device/1 HTTP/1.0
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ2Mjk5MTg1LCJqdGkiOiI4ZmNkMDkwNWIyNjg0NWM1OGI4ZjM5ODVhYzVkZjA5MCIsInVzZXJfaWQiOjF9.4Sm2D77Jk1mOL_GYMY_vy_j0mBSpBXEvqb29b9Q9S_M
+
+### Get Device User By ID
+GET http://localhost:8000/api/v1/device/user/2 HTTP/1.0
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ2Mjk5MTg1LCJqdGkiOiI4ZmNkMDkwNWIyNjg0NWM1OGI4ZjM5ODVhYzVkZjA5MCIsInVzZXJfaWQiOjF9.4Sm2D77Jk1mOL_GYMY_vy_j0mBSpBXEvqb29b9Q9S_M
