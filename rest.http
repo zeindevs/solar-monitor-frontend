@@ -15,7 +15,7 @@ POST http://103.120.232.151:6001/auth/jwt/refresh HTTP/1.0
 Content-Type: application/json
 
 {
-    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjI5OTE4NSwianRpIjoiMzczZWRmYmU1YzExNDQ4YzlmMjMyMmUwNGU4MWFhNmYiLCJ1c2VyX2lkIjoxfQ.EcTs7gMb2CwvwGMhK1IsssjPGNkV-5Lh_FXHVOYN_rc"
+    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjcwODQ5NCwianRpIjoiZGYwNmJlMGUxNjUyNDk0ZmI3ZmYwNmU5NGVhYTUwMTgiLCJ1c2VyX2lkIjoxfQ.NdblIdPc7i2DTQrQWSU2PUFPMx4y8undjrzs14Zg9NY"
 }
 
 ### Token Verify
@@ -30,15 +30,57 @@ Content-Type: application/json
 ### Get Devices
 # GET http://localhost:8000/api/v1/device/ HTTP/1.0
 GET http://103.120.232.151:6001/api/v1/device/ HTTP/1.0
+# Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ2NDQ4NjgwLCJqdGkiOiJkNDEyYjJiYzJhYmQ0ODI5YmViZDY0OWU0MDgyOTY4YiIsInVzZXJfaWQiOjF9.6nBp5mkQHTRQzY5hU0i_g7MqNcQeR8LR3QjGMNLk5_8
+
+
+### Create Devices
+# POST http://localhost:8000/api/v1/device/ HTTP/1.0
+POST http://103.120.232.151:6001/api/v1/device/ HTTP/1.0
 Content-Type: application/json
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ2NDQ4NjgwLCJqdGkiOiJkNDEyYjJiYzJhYmQ0ODI5YmViZDY0OWU0MDgyOTY4YiIsInVzZXJfaWQiOjF9.6nBp5mkQHTRQzY5hU0i_g7MqNcQeR8LR3QjGMNLk5_8
 
-### Get Devices By ID
-GET http://localhost:8000/api/v1/device/1 HTTP/1.0
-Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ2Mjk5MTg1LCJqdGkiOiI4ZmNkMDkwNWIyNjg0NWM1OGI4ZjM5ODVhYzVkZjA5MCIsInVzZXJfaWQiOjF9.4Sm2D77Jk1mOL_GYMY_vy_j0mBSpBXEvqb29b9Q9S_M
+{
+    "uid": "D002",
+    "name": "Solar Kapal 2",
+    "owner": 1,
+    "status": true
+}
 
-### Get Device User By ID
-GET http://localhost:8000/api/v1/device/user/2 HTTP/1.0
+### Get Devices By ID
+GET http://103.120.232.151:6001/api/v1/device/D001 HTTP/1.0
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ2NzE0MjM4LCJqdGkiOiIwYmFhMzRjZDJlNjY0MTU5YmVhOTNkYjA2MGI4Zjk3ZiIsInVzZXJfaWQiOjF9.DmkGYaDq515DuBt53vvPQKsmKGUGbjk4ieWXzjap5BE
+
+### Get Device Current User By ID
+GET http://103.120.232.151:6001/api/v1/solar/device/D001/current/ HTTP/1.0
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ2NzE0MjM4LCJqdGkiOiIwYmFhMzRjZDJlNjY0MTU5YmVhOTNkYjA2MGI4Zjk3ZiIsInVzZXJfaWQiOjF9.DmkGYaDq515DuBt53vvPQKsmKGUGbjk4ieWXzjap5BE
+
+### Create Solar Data
+POST http://103.120.232.151:6001/api/v1/solar/ HTTP/1.0
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ2Mjk5MTg1LCJqdGkiOiI4ZmNkMDkwNWIyNjg0NWM1OGI4ZjM5ODVhYzVkZjA5MCIsInVzZXJfaWQiOjF9.4Sm2D77Jk1mOL_GYMY_vy_j0mBSpBXEvqb29b9Q9S_M
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ2NzE0MjM4LCJqdGkiOiIwYmFhMzRjZDJlNjY0MTU5YmVhOTNkYjA2MGI4Zjk3ZiIsInVzZXJfaWQiOjF9.DmkGYaDq515DuBt53vvPQKsmKGUGbjk4ieWXzjap5BE
+
+{
+    "device": "D001",
+    "ac_voltage": 220,
+    "ac_frequency": 220,
+    "pv_input_voltage": 0,
+    "pv_input_current": 0,
+    "battery_capacity": 100,
+    "battery_voltage": 24,
+    "charging_current": 220,
+    "battery_discharge_current": 0,
+    "output_voltage": 220,
+    "output_frequency": 220,
+    "output_apparent_power": 0,
+    "output_active_power": 0,
+    "load_percent": 0,
+    "nominal_ac_voltage": 220,
+    "nominal_ac_current": 220,
+    "rated_battery_voltage": 220,
+    "nominal_output_voltage": 220,
+    "nominal_output_frequency": 220,
+    "nominal_output_current": 220,
+    "nominal_output_apparent_power": 220,
+    "nominal_output_active_power": 220
+}

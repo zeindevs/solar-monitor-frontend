@@ -2,11 +2,14 @@ import {
   CogIcon,
   // TerminalIcon
 } from "@heroicons/react/outline";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { deviceSelectors, getAllDevices } from "../../features/DeviceSlice";
+import store from "../../store/store";
 
 function Devices({ data }) {
-  if (data.length <= 0) {
+  if (data?.length <= 0) {
     return (
       <div className="bg-gray-100 text-sm text-center border rounded mb-2 p-3 hover:bg-gray-200 hover:border-gray-300">
         <span>devices not available</span>
@@ -17,12 +20,17 @@ function Devices({ data }) {
   return data.map((item, index) => (
     <NavLink
       to={"/devices/" + item?.uid}
+      key={index}
       className="bg-gray-100 border rounded mb-2 p-3 flex justify-between items-center hover:bg-gray-200 hover:border-gray-300"
     >
       <div className="flex gap-3">
         <div>
           <p className="text-xs">Device ID</p>
           <p>{item?.uid}</p>
+        </div>
+        <div>
+          <p className="text-xs">Device Name</p>
+          <p>{item?.name}</p>
         </div>
         <div>
           <p className="text-xs">Serial Number</p>
@@ -54,7 +62,36 @@ function Devices({ data }) {
   ));
 }
 
-export default function DevicesList({ data }) {
+// const devices = [
+//   {
+//     uid: "D001",
+//     serial: "0000-0000-0000",
+//     owner: "owner1@gmail.com",
+//     status: true,
+//   },
+//   {
+//     uid: "D002",
+//     serial: "0000-0000-0000",
+//     owner: "owner1@gmail.com",
+//     status: true,
+//   },
+//   {
+//     uid: "D003",
+//     serial: "0000-0000-0000",
+//     owner: "owner1@gmail.com",
+//     status: false,
+//   },
+// ];
+
+export default function DevicesList() {
+  const devices = useSelector(deviceSelectors.selectAll)
+  const { device } = store.getState((state) => state.device);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllDevices());
+  }, [dispatch]);
+
   return (
     <div className="bg-white p-3">
       <div className="mb-3 flex justify-between">
@@ -68,7 +105,13 @@ export default function DevicesList({ data }) {
         </div>
       </div>
       <div>
-        <Devices data={data} />
+        {device.isFetching ? (
+          <div className="bg-gray-100 text-sm text-center border rounded mb-2 p-3 hover:bg-gray-200 hover:border-gray-300">
+            <span>load data...</span>
+          </div>
+        ) : (
+          <Devices data={devices} />
+        )}
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import BasicInformation from "../../../components/solar/BasicInformation";
 import StatisiticsUsages from "../../../components/solar/StatisiticsUsages";
 import DeviceInfo from "../../../components/device/DeviceInfo";
 import NavTop from "../../../components/NavTop";
-import RatedInformation from "../../../components/solar/RatedInformation";
+// import RatedInformation from "../../../components/solar/RatedInformation";
 
 export default function DeviceMonitor() {
   let params = useParams();
@@ -20,7 +20,7 @@ export default function DeviceMonitor() {
       <div className="p-3 flex flex-row gap-3">
         <div className="w-3/4">
           <BasicInformation />
-          <RatedInformation />
+          {/* <RatedInformation /> */}
           <StatisiticsUsages />
         </div>
         <div className="bg-white w-3/12 p-3">
