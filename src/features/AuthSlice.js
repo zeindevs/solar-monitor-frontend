@@ -1,6 +1,6 @@
 import {
   createAsyncThunk,
-//   createEntityAdapter,
+  //   createEntityAdapter,
   createSlice,
 } from "@reduxjs/toolkit";
 import AuthService from "../services/AuthService";
@@ -16,46 +16,40 @@ const initialState = {
 };
 
 export const actionLogin = createAsyncThunk(
-    "user/login",
-    async ({email, password}) => {
-        const response = await AuthService.login(email, password);
-        return response;
-    }
+  "user/login",
+  async ({ email, password }) => {
+    return await AuthService.login(email, password);
+  }
 );
 
 export const actionLogout = createAsyncThunk("user/login", async () => {
-    await AuthService.logout();
+  await AuthService.logout();
 });
 
-
-// const userEntity = createEntityAdapter({
-//     user: (user) => user.data,
-//     token: (user) => user.token
-// })
+// const userEntity = createEntityAdapter()
 
 const authSlice = createSlice({
-    name: 'auth',
-    initialState: initialState,
-    extraReducers: {
-        [actionLogin.fulfilled]: (state, { payload }) => {
-            state.isLoggedIn = true;
-            state.isFetching = false;
-            state.isSuccess = true;
-            state.user = payload;
-        },
-        [actionLogin.pending]: (state) => {
-            state.isFetching = true;
-        },
-        [actionLogin.rejected]: (state, { payload }) => {
-            state.isFetching = false;
-            state.isError = true;
-            state.errorMessage = payload.message;
-        },
-        [actionLogout.fulfilled]: (state) => {
-            state.isLoggedIn = false;
-            state.user = null;
-        },
-    }
-})
+  name: "auth",
+  initialState,
+  extraReducers: {
+    [actionLogin.pending]: (state) => {
+      state.isFetching = true;
+      state.isError = false;
+      state.errorMessage = "";
+    },
+    [actionLogin.rejected]: (state, { error }) => {
+      state.isFetching = false;
+      state.isError = true;
+      state.errorMessage = error.message;
+    },
+    [actionLogin.fulfilled]: (state, { payload }) => {
+      state.isLoggedIn = true;
+      state.isFetching = false;
+      state.isSuccess = true;
+      state.user = payload.access;
+      state.errorMessage = "";
+    },
+  },
+});
 
 export default authSlice.reducer;

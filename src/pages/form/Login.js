@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { actionLogin } from "../../features/AuthSlice";
+import store from "../../store/store";
 
 const schema = yup
   .object({
@@ -14,8 +15,9 @@ const schema = yup
   .required();
 
 export default function Login() {
+  const { auth } = store.getState((state) => state.auth);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const {
     register,
@@ -25,11 +27,6 @@ export default function Login() {
 
   async function onSubmit({ email, password }) {
     dispatch(actionLogin({ email, password }))
-      .unwarp()
-      .then(() => {
-        navigate("/");
-      })
-      .catch(() => {});
   }
 
   return (
@@ -42,6 +39,11 @@ export default function Login() {
               <span className="">Monitor</span>
             </h2>
           </div>
+          {auth?.isError && (
+            <div className="mb-3 text-sm text-center border rounded bg-red-300 p-2 border-red-400">
+              <span className="text-red-700">{auth?.errorMessage}</span>
+            </div>
+          )}
           <div className="flex flex-col mb-3">
             <label>Email Address</label>
             <input
