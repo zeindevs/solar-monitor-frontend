@@ -20,17 +20,21 @@ axiosJWT.interceptors.request.use(
     const refresh_token = localStorage.getItem("refresh");
     const decoded = jwtDecode(localStorage.getItem("token"));
     if (decoded.exp * 1000 < currentDate.getTime()) {
-      const { status, data } = await axios.post(API_URL + "refresh", {
-        refresh: refresh_token,
-      });
-      if (status === 200) {
-        localStorage.setItem("token", data.access);
-        // localStorage.setItem("refresh", data.refresh);
-      } else {
-        localStorage.removeItem("token");
-        localStorage.removeItem("refresh");
-      }
-      window.location.reload();
+      await axios
+        .post(API_URL + "refresh", {
+          refresh: refresh_token,
+        })
+        .then(({ data }) => {
+          localStorage.setItem("token", data.access);
+          localStorage.setItem("refresh", data.refresh);
+        })
+        .catch(() => {
+          localStorage.removeItem("token");
+          localStorage.removeItem("refresh");
+        })
+        .finally(() => {
+          window.location.reload();
+        });
     }
     return config;
   },
