@@ -1,19 +1,10 @@
 import {
   createAsyncThunk,
-  //   createEntityAdapter,
+  createEntityAdapter,
   createSlice,
 } from "@reduxjs/toolkit";
 import AuthService from "../services/AuthService";
 const user = localStorage.getItem("token");
-
-const initialState = {
-  user: user ? user : null,
-  isLoggedIn: user ? true : false,
-  isFetching: false,
-  isSuccess: false,
-  isError: false,
-  errorMessage: "",
-};
 
 export const actionLogin = createAsyncThunk(
   "user/login",
@@ -26,7 +17,16 @@ export const actionLogout = createAsyncThunk("user/login", async () => {
   await AuthService.logout();
 });
 
-// const userEntity = createEntityAdapter()
+const userEntity = createEntityAdapter();
+
+const initialState = userEntity.getInitialState({
+  user: user ? user : null,
+  isLoggedIn: user ? true : false,
+  isFetching: false,
+  isSuccess: false,
+  isError: false,
+  errorMessage: "",
+});
 
 const authSlice = createSlice({
   name: "auth",
@@ -51,5 +51,7 @@ const authSlice = createSlice({
     },
   },
 });
+
+export const authSelectors = userEntity.getSelectors((state) => state.auth);
 
 export default authSlice.reducer;
