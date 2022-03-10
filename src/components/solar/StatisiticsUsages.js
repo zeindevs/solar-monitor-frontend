@@ -1,6 +1,7 @@
 import React from "react";
 import ChartACVoltage from "./chart/ChartACVoltage";
-import ChartOutputVoltage from "./chart/ChartOutputVoltge";
+import ChartBatteryCapacity from "./chart/ChartBatteryCapacity";
+// import ChartOutputVoltage from "./chart/ChartOutputVoltge";
 
 export default function StatisiticsUsages() {
   return (
@@ -27,13 +28,14 @@ export default function StatisiticsUsages() {
       </div>
       <div className="flex gap-3 flex-wrap text-center mb-3">
         <div className="bg-gray-100 p-2 rounded w-full">
-          {/* <h3 className="text-sm">AC Voltage</h3> */}
-          <ChartACVoltage />
+          <ChartBatteryCapacity />
         </div>
         <div className="bg-gray-100 p-2 rounded w-full">
-          {/* <h3 className="text-sm">Output Voltage</h3> */}
-          <ChartOutputVoltage />
+          <ChartACVoltage />
         </div>
+        {/* <div className="bg-gray-100 p-2 rounded w-full">
+          <ChartOutputVoltage />
+        </div> */}
       </div>
       {/* <div className="flex gap-3 flex-row text-center mb-3">
         <div className="bg-gray-100 p-2 rounded w-2/4">
