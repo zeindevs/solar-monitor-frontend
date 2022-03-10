@@ -31,14 +31,14 @@ export default function NavTop() {
           >
             Devices
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="/users"
             className={({ isActive }) =>
               classNames(isActive ? 'bg-blue-700' : '', 'py-1 px-3 rounded hover:bg-blue-700 shadow-sm') 
             }
           >
             Users
-          </NavLink>
+          </NavLink> */}
         </div>
       </div>
       <div className="flex gap-2 items-center">
