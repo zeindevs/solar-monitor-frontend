@@ -1,5 +1,5 @@
 import axios from "axios";
-import authHeader, { axiosJWT } from "./AuthHeader";
+import { axiosJWT } from "./AuthHeader";
 
 // const API_URL = "http://103.120.232.151:6001/auth/";
 const API_URL = "https://solar-monitor-server.herokuapp.com/api/v1/";
@@ -25,9 +25,7 @@ class AuthService {
   }
 
   async logout() {
-    // const response = await axiosJWT.delete(API_URL + "auth/jwt/logout", {
-    //   headers: authHeader(),
-    // });
+    // const response = await axiosJWT.delete(API_URL + "auth/jwt/logout");
     // const { data, status } = response;
     // if (status === 200) {
     //   return response.data;
