@@ -8,8 +8,8 @@ const user = localStorage.getItem("token");
 
 export const actionLogin = createAsyncThunk(
   "user/login",
-  async ({ email, password }) => {
-    return await AuthService.login(email, password);
+  async ({ username, password }) => {
+    return await AuthService.login(username, password);
   }
 );
 

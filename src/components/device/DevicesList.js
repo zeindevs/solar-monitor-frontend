@@ -19,14 +19,14 @@ function Devices({ data }) {
 
   return data.map((item, index) => (
     <NavLink
-      to={"/devices/" + item?.uid}
+      to={"/devices/" + item?.id}
       key={index}
       className="bg-gray-100 border rounded mb-2 p-3 flex justify-between items-center hover:bg-gray-200 hover:border-gray-300"
     >
       <div className="flex gap-3">
         <div>
           <p className="text-xs">Device ID</p>
-          <p>{item?.uid}</p>
+          <p>{item?.id}</p>
         </div>
         <div>
           <p className="text-xs">Device Name</p>

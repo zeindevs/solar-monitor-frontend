@@ -7,7 +7,7 @@ import DeviceMonitor from "./dashboard/device/DeviceMonitor";
 import Home from "./dashboard/Home";
 import Users from "./dashboard/users/Users";
 import Login from "./form/Login";
-import Register from "./form/Register";
+// import Register from "./form/Register";
 
 function App() {
   const { auth } = store.getState((state) => state.auth);
@@ -31,14 +31,14 @@ function App() {
             </HashAuth>
           }
         />
-        <Route
+        {/* <Route
           path="/register"
           element={
             <HashAuth>
               <Register />
             </HashAuth>
           }
-        />
+        /> */}
         <Route
           path="/"
           element={

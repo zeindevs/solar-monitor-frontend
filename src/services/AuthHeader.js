@@ -1,7 +1,8 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 
-const API_URL = "http://103.120.232.151:6001/auth/jwt/";
+// const API_URL = "http://103.120.232.151:6001/auth/jwt/"; 
+const API_URL = "https://solar-monitor-server.herokuapp.com/api/v1/auth/jwt/"; 
 
 export default function authHeader() {
   const token = localStorage.getItem("token");

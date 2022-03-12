@@ -3,13 +3,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { actionLogin } from "../../features/AuthSlice";
 import store from "../../store/store";
 
 const schema = yup
   .object({
-    email: yup.string().email().required(),
+    username: yup.string().required(),
     password: yup.string().required(),
   })
   .required();
@@ -25,8 +25,8 @@ export default function Login() {
     handleSubmit,
   } = useForm({ resolver: yupResolver(schema) });
 
-  async function onSubmit({ email, password }) {
-    dispatch(actionLogin({ email, password }))
+  async function onSubmit({ username, password }) {
+    dispatch(actionLogin({ username, password }))
   }
 
   return (
@@ -45,15 +45,15 @@ export default function Login() {
             </div>
           )}
           <div className="flex flex-col mb-3">
-            <label>Email Address</label>
+            <label>Username</label>
             <input
-              type="email"
+              type="text"
               className="bg-white py-2 px-3 border outline-none border-gray-300 rounded-sm focus:border-blue-500"
-              {...register("email", { required: true })}
-              autoComplete="email"
+              {...register("username", { required: true })}
+              autoComplete="username"
             />
             <span className="text-sm text-red-500">
-              {errors.email?.message}
+              {errors.username?.message}
             </span>
           </div>
           <div className="flex flex-col mb-3">
@@ -78,12 +78,12 @@ export default function Login() {
               Login
             </button>
           </div>
-          <div className="flex mb-3 justify-center gap-1">
+          {/* <div className="flex mb-3 justify-center gap-1">
             <span>Don't have account?</span>
             <a href="/register" className="text-blue-500">
               Register
             </a>
-          </div>
+          </div> */}
         </form>
       </div>
     </div>

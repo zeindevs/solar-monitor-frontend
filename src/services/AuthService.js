@@ -1,21 +1,22 @@
 import axios from "axios";
 import authHeader, { axiosJWT } from "./AuthHeader";
 
-const API_URL = "http://103.120.232.151:6001/auth/";
+// const API_URL = "http://103.120.232.151:6001/auth/";
+const API_URL = "https://solar-monitor-server.herokuapp.com/api/v1/";
 
 class AuthService {
-  async login(email, password) {
+  async login(username, password) {
     try {
-      const response = await axios.post(API_URL + "jwt/create", {
-        email,
+      const response = await axios.post(API_URL + "auth/jwt/create", {
+        username,
         password,
       });
-      if (response.status === 200) {
-        localStorage.setItem("token", response.data.access);
-        localStorage.setItem("refresh", response.data.refresh);
-        // console.log(response)
+      const { data, status } = response;
+      if (status === 200) {
+        localStorage.setItem("token", data.access);
+        localStorage.setItem("refresh", data.refresh);
+        return data;
       }
-      return Promise.resolve(response.data);
     } catch (error) {
       return Promise.reject(
         "No active account found with the given credentials"
@@ -24,30 +25,39 @@ class AuthService {
   }
 
   async logout() {
-    const response = await axiosJWT.delete(API_URL + "logout", {
+    const response = await axiosJWT.delete(API_URL + "auth/jwt/logout", {
       headers: authHeader(),
     });
-    if (response.status === 200) {
+    const { data, status } = response;
+    if (status === 200) {
       localStorage.removeItem("token");
       localStorage.removeItem("refresh");
+      return response.data;
     }
-    return response.data;
+    Promise.reject(data);
   }
 
   async register(username, email, phone_number, password) {
-    await axiosJWT
-      .post(API_URL + "signup", {
-        username,
-        phone_number,
-        email,
-        password,
-      })
-      .then((response) => {
-        return response.data;
-      })
-      .catch(() => {
-        return Promise.reject("");
-      });
+    const response = await axiosJWT.post(API_URL + "auth/jwt/signup", {
+      username,
+      phone_number,
+      email,
+      password,
+    });
+    const { data, status } = response;
+    if (status === 200) {
+      return data;
+    }
+    Promise.reject(data);
+  }
+
+  async profile() {
+    const response = await axiosJWT.get(API_URL + "users/me");
+    const { data, status } = response;
+    if (status === 200) {
+      return data;
+    }
+    Promise.reject(data);
   }
 }
 
