@@ -13,8 +13,8 @@ export const actionLogin = createAsyncThunk(
   }
 );
 
-export const actionLogout = createAsyncThunk("user/login", async () => {
-  await AuthService.logout();
+export const actionLogout = createAsyncThunk("user/logout", async () => {
+  return await AuthService.logout();
 });
 
 const userEntity = createEntityAdapter();
@@ -47,6 +47,20 @@ const authSlice = createSlice({
       state.isFetching = false;
       state.isSuccess = true;
       state.user = payload.access;
+      state.errorMessage = "";
+    },
+    [actionLogout.pending]: (state) => {
+      state.isFetching = true;
+      state.errorMessage = "";
+    },
+    [actionLogout.rejected]: (state) => {
+      state.isLoggedIn = false;
+      state.user = null;
+    },
+    [actionLogout.fulfilled]: (state) => {
+      state.isLoggedIn = false;
+      state.isFetching = false;
+      state.user = null;
       state.errorMessage = "";
     },
   },

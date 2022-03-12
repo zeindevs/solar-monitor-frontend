@@ -25,16 +25,17 @@ class AuthService {
   }
 
   async logout() {
-    const response = await axiosJWT.delete(API_URL + "auth/jwt/logout", {
-      headers: authHeader(),
-    });
-    const { data, status } = response;
-    if (status === 200) {
-      localStorage.removeItem("token");
-      localStorage.removeItem("refresh");
-      return response.data;
-    }
-    Promise.reject(data);
+    // const response = await axiosJWT.delete(API_URL + "auth/jwt/logout", {
+    //   headers: authHeader(),
+    // });
+    // const { data, status } = response;
+    // if (status === 200) {
+    //   return response.data;
+    // }
+    localStorage.removeItem("token");
+    localStorage.removeItem("refresh");
+    // Promise.reject(data);
+    return true;
   }
 
   async register(username, email, phone_number, password) {
