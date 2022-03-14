@@ -28,44 +28,44 @@ export default function BasicInformation() {
           </button>
         </div>
       </div>
-      <div className="flex gap-3 flex-wrap text-center">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 flex-wrap text-center">
         <div className="bg-gray-200 p-2 rounded">
-          <h3 className="text-sm">AC Voltage</h3>
+          <h3 className="text-xs">AC Voltage</h3>
           <p className="text-2xl">
             {solars[0] ? solars[0].ac_voltage : "-"}
             <span className="text-base">V</span>
           </p>
         </div>
         <div className="bg-gray-200 p-2 rounded">
-          <h3 className="text-sm">AC Frequency</h3>
+          <h3 className="text-xs">AC Frequency</h3>
           <p className="text-2xl">
             {solars[0] ? solars[0].ac_frequency : "-"}
             <span className="text-base">Hz</span>
           </p>
         </div>
         <div className="bg-gray-200 p-2 rounded">
-          <h3 className="text-sm">PV Input Voltage</h3>
+          <h3 className="text-xs">PV Input Voltage</h3>
           <p className="text-2xl">
             {solars[0] ? solars[0].pv_input_voltage : "-"}
             <span className="text-base">V</span>
           </p>
         </div>
         <div className="bg-gray-200 p-2 rounded">
-          <h3 className="text-sm">PV Input Current</h3>
+          <h3 className="text-xs">PV Input Current</h3>
           <p className="text-2xl">
             {solars[0] ? solars[0].pv_input_current : "-"}
             <span className="text-base">A</span>
           </p>
         </div>
         <div className="bg-gray-200 p-2 rounded">
-          <h3 className="text-sm">Battery Capacity</h3>
+          <h3 className="text-xs">Battery Capacity</h3>
           <p className="text-2xl">
             {solars[0] ? solars[0].battery_capacity : "-"}
             <span className="text-base">%</span>
           </p>
         </div>
         <div className="bg-gray-200 p-2 rounded">
-          <h3 className="text-sm">Charging Current</h3>
+          <h3 className="text-xs">Charging Current</h3>
           <p className="text-2xl">
             {solars[0] ? solars[0].charging_current : "-"}
             <span className="text-base">A</span>
@@ -73,42 +73,42 @@ export default function BasicInformation() {
         </div>
         {/*  */}
         <div className="bg-gray-200 p-2 rounded">
-          <h3 className="text-sm">Battery Discarge Current</h3>
+          <h3 className="text-xs">Battery Discarge Current</h3>
           <p className="text-2xl">
             {solars[0] ? solars[0].battery_discharge_current : "-"}
             <span className="text-base">A</span>
           </p>
         </div>
         <div className="bg-gray-200 p-2 rounded">
-          <h3 className="text-sm">Output Voltage</h3>
+          <h3 className="text-xs">Output Voltage</h3>
           <p className="text-2xl">
             {solars[0] ? solars[0].output_voltage : "-"}
             <span className="text-base">V</span>
           </p>
         </div>
         <div className="bg-gray-200 p-2 rounded">
-          <h3 className="text-sm">Output Frequency</h3>
+          <h3 className="text-xs">Output Frequency</h3>
           <p className="text-2xl">
             {solars[0] ? solars[0].output_frequency : "-"}
             <span className="text-base">Hz</span>
           </p>
         </div>
         <div className="bg-gray-200 p-2 rounded">
-          <h3 className="text-sm">Output Apparent Power</h3>
+          <h3 className="text-xs">Output Apparent Power</h3>
           <p className="text-2xl">
             {solars[0] ? solars[0].output_apparent_power : "-"}
             <span className="text-base">VA</span>
           </p>
         </div>
         <div className="bg-gray-200 p-2 rounded">
-          <h3 className="text-sm">Output Active Power</h3>
+          <h3 className="text-xs">Output Active Power</h3>
           <p className="text-2xl">
             {solars[0] ? solars[0].output_active_power : "-"}
             <span className="text-base">W</span>
           </p>
         </div>
         <div className="bg-gray-200 p-2 rounded">
-          <h3 className="text-sm">Load Percent</h3>
+          <h3 className="text-xs">Load Percent</h3>
           <p className="text-2xl">
             {solars[0] ? solars[0].load_percent : "-"}
             <span className="text-base">%</span>

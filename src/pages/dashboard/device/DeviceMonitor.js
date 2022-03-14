@@ -18,12 +18,12 @@ export default function DeviceMonitor() {
         <div></div>
       </div>
       <div className="p-3 flex flex-row gap-3">
-        <div className="w-3/4">
+        <div className="md:w-3/4 w-full">
           <BasicInformation />
           <RatedInformation />
           <StatisiticsUsages />
         </div>
-        <div className="bg-white w-3/12 p-3">
+        <div className="bg-white w-3/12 p-3 md:block hidden">
           <DeviceInfo />
         </div>
       </div>

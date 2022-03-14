@@ -14,10 +14,10 @@ export default function Device() {
         <div></div>
       </div>
       <div className="p-3 flex flex-row gap-3">
-        <div className="w-3/4">
+        <div className="md:w-3/4 w-full" >
           <DevicesList/>
         </div>
-        <div className="bg-white w-3/12 p-3">
+        <div className="bg-white md:w-3/12 p-3m md:block hidden">
           <DeviceInfo />
         </div>
       </div>

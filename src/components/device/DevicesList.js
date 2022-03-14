@@ -23,7 +23,7 @@ function Devices({ data }) {
       key={index}
       className="bg-gray-100 border rounded mb-2 p-3 flex justify-between items-center hover:bg-gray-200 hover:border-gray-300"
     >
-      <div className="flex gap-3">
+      <div className="flex gap-3 flex-wrap">
         <div>
           <p className="text-xs">Device ID</p>
           <p>{item?.id}</p>
@@ -98,11 +98,11 @@ export default function DevicesList() {
         <div>
           <h3 className="font-medium">Devices</h3>
         </div>
-        <div>
+        {/* <div>
           <button className="text-xs bg-blue-500 py-1 px-2 rounded-sm text-white hover:bg-blue-600 focus:bg-blue-700">
             Add Device
           </button>
-        </div>
+        </div> */}
       </div>
       <div>
         {device.isFetching ? (

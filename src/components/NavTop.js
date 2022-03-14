@@ -52,7 +52,7 @@ export default function NavTop() {
         </div>
       </div>
       <div className="flex gap-2 items-center">
-        <p>email@gmail.com</p>
+        <p></p>
         <button
           onClick={handleLogout}
           className="text-sm py-1 px-3 rounded bg-red-500 hover:bg-red-600 focus:bg-red-600"
