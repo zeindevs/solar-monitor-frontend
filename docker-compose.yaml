@@ -3,7 +3,7 @@ version: '3.7'
 services:
   frontend:
     container_name: ahc_frontend
-    build: ./ahc_frontend
+    build: .
     volumes:
       - './:/app'
       - '/app/node_modules'
